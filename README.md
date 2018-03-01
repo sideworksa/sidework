@@ -4,19 +4,19 @@ created by @marykathrynsyms
 
 
 * Sidework Feature List
-- [ ] #### Visitors
+#### Visitors
     - [ ] View all workers, businesses, job listings
     - [ ] View `about us` and `how it works` pages
     - [ ] Create worker or business account
     - [ ] Ability to login `/login`
     - [ ] Ability to logout `/logout`
-- [ ] #### Users
+#### Users
     - [ ] View a list of users, i.e. all users in the database, with links to individual users `/users` (business dashboard)
     - [ ] Edit a user's information `/users/{id}/edit` (access control)
     - [ ] Create User login `/login`
     - [ ] Delete a user (access control)
     - [ ] Doublecheck all validation error messages
-- [ ] #### Workers
+#### Workers
     - [ ] Create a worker `/workers/create` (registration page)
         - rows are inserted into the `workers` table
     - [ ] View a worker `/worker/{id}` (worker profile page)
@@ -25,7 +25,7 @@ created by @marykathrynsyms
         - information in the database is changed
     - [ ] Delete a user (access control)    
     - [ ] Doublecheck all validation error messages
-- [ ] #### Businesses
+#### Businesses
     - [ ] Create a business `/businesses/create`
         - The business should be related to the logged in user when creating
         - just logged in users should be able to visit this page
@@ -38,7 +38,7 @@ created by @marykathrynsyms
     - [ ] View the listings a business has created on the individual business page
     - [ ] Delete a business (access control)
     - [ ] Doublecheck all validation error messages
-- [ ] #### Job Listings
+#### Job Listings
     - [ ] Create a listing with just details `/listings/create`
         - When a listing is created, the business_id of the logged in user
           should be attached to the listing
