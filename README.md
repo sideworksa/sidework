@@ -1,9 +1,15 @@
 # sidework 
 created by @marykathrynsyms
 
+**follow along**    
+* [project road map](https://github.com/sideworksa/sidework/projects/1)       
+* [slack workspace](https://sidework-sa.slack.com/)
+* [instagram](https://www.instagram.com/sideworksa/)        
+* [twitter](https://twitter.com/sideworksa)       
 
 
-* Sidework Feature List
+
+#### Sidework Feature List
 - [ ] Visitors
     - [ ] View all workers, businesses, job listings
     - [ ] View `about us` and `how it works` pages
@@ -94,3 +100,4 @@ created by @marykathrynsyms
                 - [ ] ability to add tentative events or * Reminders * when employee puts in 2 weeks notice, post new job listing  
     - [ ] Business profile has Google Maps API                      
     - [ ] Dashboard feature shows metrics of past shifts $ and total to date for Workers & Business
+    
