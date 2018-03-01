@@ -88,10 +88,10 @@ created by @marykathrynsyms
             - [ ] Mark job listing as "covered"     
             - [ ] view in separate list     
     - [ ] Worker Account            
-            - [ ] Upload profile picture        
-            - [ ] Workers can save favorite businesses      
-                - [ ] view and edit list on dashboard       
-            - [ ] Calendar API to view upcoming shift coverage      
+        - [ ] Upload profile picture        
+        - [ ] Workers can save favorite businesses      
+            - [ ] view and edit list on dashboard       
+        - [ ] Calendar API to view upcoming shift coverage      
     - [ ] Business Account      
         - [ ] Upload profile picture        
         - [ ] Business can upload menus pdf & floor chart documents to profile      
