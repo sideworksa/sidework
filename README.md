@@ -3,7 +3,7 @@ created by @marykathrynsyms
 <br>
 <br>
 
-###follow along   
+### follow along   
 * [project road map](https://github.com/sideworksa/sidework/projects/1)       
 * [slack workspace](https://sidework-sa.slack.com/)
 * [instagram](https://www.instagram.com/sideworksa/)        
@@ -102,13 +102,16 @@ created by @marykathrynsyms
         - [ ] Business views upcoming shifts, hover over for worker contact info & photo        
             - [ ] ability to add tentative events or * *Reminders* * when employee puts in 2 weeks notice, post new job listing     
             - [ ] Businesses can post automated job listings at future date          
-    - [ ] `Covers` feature - enable in browser, real-time messaging and notification system     
+    - [ ] Covers Feature 
+        - [ ] enable in browser, real-time messaging and notification system     
     - [ ] Rating Feature        
-          - [ ] Businesses rate workers after shift     
-          - [ ] Worker rates experience & work environment                          
-    - [ ] `Availability` Feature       
-          - [ ] Carousel of available workers       
-          - [ ] Featured order determined by top Sidework rated workers & rating                     
-          - [ ] Worker text area form input for small blurb on current availability         
-    - [ ] `Shifts` feature - shows metrics of past shifts $ and total to date for Workers & Business            
+        - [ ] Businesses rate workers after shift     
+        - [ ] Worker rates experience & work environment                          
+    - [ ] Availability Feature       
+        - [ ] Carousel of available workers       
+        - [ ] Featured order determined by top Sidework rated workers & rating                     
+        - [ ] Worker text area form input for small blurb on current availability         
+    - [ ] Shifts Feature 
+        - [ ] shows metrics of past shifts $
+        - [ ] total revenue to date for Workers & Business            
     
