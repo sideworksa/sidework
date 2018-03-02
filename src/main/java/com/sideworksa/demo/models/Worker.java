@@ -90,4 +90,6 @@ public class Worker {
         this.bio = bio;
         this.skills = skills;
     }
+
+    public Worker() {}
 }
