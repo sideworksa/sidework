@@ -24,6 +24,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    // connecting Business profile to User
+    @OneToOne
+    private Business business;
+
 
     public long getId() {
         return id;

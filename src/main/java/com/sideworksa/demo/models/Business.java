@@ -29,6 +29,10 @@ public class Business {
     @Column
     private String businessInfo;
 
+    // connecting Business profile to User
+    @OneToOne
+    private User user;
+
 
     public long getId() {
         return id;
