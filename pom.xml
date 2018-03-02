@@ -35,8 +35,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< Updated upstream
-=======
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,7 +57,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
->>>>>>> Stashed changes
+
 	</dependencies>
 
 	<build>
