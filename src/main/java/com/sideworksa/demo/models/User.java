@@ -65,6 +65,18 @@ public class User {
         this.password = password;
     }
 
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
+    public User(Business business) {
+
+        this.business = business;
+    }
 
     public User(String username, String email, String password) {
         this.username = username;
@@ -78,5 +90,7 @@ public class User {
         username = copy.username;
         password = copy.password;
     }
+
+    public User() {}
 
 }

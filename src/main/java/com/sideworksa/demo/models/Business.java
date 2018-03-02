@@ -82,11 +82,28 @@ public class Business {
         this.businessInfo = businessInfo;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Business(User user) {
+        this.user = user;
+    }
+
+
     public Business(String businessName, String businessPhone, String website, String address, String businessInfo) {
         this.businessName = businessName;
         this.businessPhone = businessPhone;
         this.website = website;
         this.address = address;
         this.businessInfo = businessInfo;
+    }
+
+    public Business() {
+
     }
 }
