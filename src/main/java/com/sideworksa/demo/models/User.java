@@ -24,9 +24,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // connecting Business profile to User
+    // connecting User profile to Business
     @OneToOne
     private Business business;
+
+    // connecting User profile to Worker
+    @OneToOne
+    private Worker worker;
 
 
     public long getId() {
@@ -61,11 +65,11 @@ public class User {
         this.password = password;
     }
 
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
-
 
 }

@@ -30,6 +30,11 @@ public class Worker {
     @Column
     private String skills;
 
+    // connecting Worker profile to User
+    @OneToOne
+    private User user;
+
+
     public long getId() {
         return id;
     }
