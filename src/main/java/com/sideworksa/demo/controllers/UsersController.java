@@ -1,14 +1,15 @@
 package com.sideworksa.demo.controllers;
 
+import com.sideworksa.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
+
 
 @Controller
 public class UsersController {
-    private final UserRepsitory userRepsitory;
-    private PasswordEncder passwordEncoder;
+    private final UserRepository userRepository;
 
-    public UsersController(UserRepsitory userRepsitory, PasswordEncder passwordEncoder) {
-        this.userRepsitory = userRepsitory;
-        this.passwordEncoder = passwordEncoder;
+
+    public UsersController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 }
