@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BUSINESS CREATE TEMP</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="normalize-page-margins">
+        <div class="pic"></div>
+        <h1 class="text-center">register</h1>
+
+        <br/>
+        <div class="form-wrapper">
+            <!--Display the form for creating a new business-->
+            <form th:action="@{/businesses/create}" method="post" th:object="${business}">
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="username">username</label>
+                    <input id="username" name="username" th:value="${user.username}" class="form-control" type="text" placeholder="tacobody"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="email">email</label>
+                    <input id="email" name="email" th:value="${user.email}" class="form-control" type="email" placeholder="mary@tacobody.com"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="password">password</label>
+                    <input id="password" name="password" th:value="${user.password}" class="form-control" type="password" placeholder="************"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="confirm_password">confirm password</label>
+                    <input id="confirm_password" name="password_confirm" class="form-control" type="password" placeholder="************"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="business_name">business name</label>
+                    <input id="business_name" name="businessName" th:field="*{businessName}" class="form-control"
+                           type="text" placeholder="The Monterey"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="business_address">address</label>
+                    <input id="business_address" name="address" th:field="*{address}" class="form-control"
+                           type="text" placeholder="1127 S St Mary's St, San Antonio, TX 78210"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="business_phone_number">business phone number</label>
+                    <input id="business_phone_number" name="businessPhone" th:field="*{businessPhone}"
+                           class="form-control" type="tel" placeholder="210-867-5309"/>
+                </div>
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="website">website</label>
+                    <input id="website" name="website" th:field="*{website}" class="form-control"
+                           type="text" placeholder="http://www.mybusiness.com"/>
+                </div>
+
+                <div class="col-sm-12 form-group">
+                    <label for="info">info</label>
+                    <textarea id="info" name="businessInfo" th:field="*{businessInfo}" class="form-control" type="textarea" rows="3" placeholder="Inform others about your business"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label><a href="#">please upload establishment owner's verification letter of approval</a></label>
+                </div>
+
+                <br/>
+                <div class="col-sm-12">
+                    <input type="submit" value="sign up" class="btn btn-success btn-block "/>
+                </div>
+            </form>
+        </div> <!-- form wrapper -->
+    </div> <!-- normalize page margins -->
+</div> <!-- container -->
+</body>
+</html>
