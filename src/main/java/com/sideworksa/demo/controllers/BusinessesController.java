@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BusinessesController {
     private final BusinessRepository businessRepository;
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     public BusinessesController(BusinessRepository businessRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.businessRepository = businessRepository;
