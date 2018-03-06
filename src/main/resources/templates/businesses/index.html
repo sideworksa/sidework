@@ -8,6 +8,12 @@
 
 <div class="container">
     <h1>all businesses</h1>
+    <form class="navbar-form navbar-right" action="/search">
+        <div class="form-group">
+            <input type="text" name="searchKeyword" class="form-control" placeholder="search" />
+        </div>
+        <button type="submit" class="btn btn-primary">search</button>
+    </form>
     <!--<th:block th:each="business, i : ${businesses}">-->
     <!--<th:block th:if="${i.index % 3 == 0}" th:utext="'&lt;div class=&quot;row&quot;&gt;'"/>-->
     <div class="card col-sm-12 col-md-6 card-sizing">

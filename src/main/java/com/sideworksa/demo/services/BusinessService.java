@@ -5,6 +5,8 @@ import com.sideworksa.demo.repositories.BusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BusinessService {
     private BusinessRepository businessRepository;
@@ -16,6 +18,11 @@ public class BusinessService {
 
     public Iterable<Business> findAll() {
         return businessRepository.findAll();
+    }
+
+
+    public List<Business> searchForBusiness(String name) {
+        return businessRepository.search(name);
     }
 
 }
