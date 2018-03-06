@@ -13,36 +13,36 @@ created by @marykathrynsyms
 
 ### Sidework Feature List
 - [ ] Visitors
-    - [ ] View all workers, businesses, job listings
+    - [X] View all workers, businesses, job listings
     - [ ] View `about us` and `how it works` pages
-    - [ ] Create worker or business account
-    - [ ] Ability to login `/login`
-    - [ ] Ability to logout `/logout`
+    - [X] Create worker or business account
+    - [X] Ability to login `/login`
 - [ ] Users
-    - [ ] View a list of users, i.e. all users in the database, with links to individual users `/users` (business dashboard)
+    - [X] View a list of users, i.e. all users in the database, with links to individual users `/users` (business dashboard)
     - [ ] Edit a user's information `/users/{id}/edit` (access control)
-    - [ ] Create User login `/login`
+    - [X] Create User login `/login`
     - [ ] Delete a user (access control)
     - [ ] Double check all validation error messages
+    - [X] Ability to logout `/logout`
 - [ ] Workers
-    - [ ] Create a worker `/workers/create` (registration page)
+    - [X] Create a worker `/workers/create` (registration page)
         - rows are inserted into the `workers` table
-    - [ ] View a worker `/worker/{id}` (worker profile page)
-    - [ ] View a list of users, i.e. all users in the database, with links to individual users `/workers` (view on business dashboard)
+    - [X] View a worker `/worker/{id}` (worker profile page)
+    - [X] View a list of users, i.e. all users in the database, with links to individual users `/workers` (view on business dashboard)
     - [ ] Edit a user's information `/workers/{id}/edit` (access control)
         - information in the database is changed
     - [ ] Delete a user (access control)    
     - [ ] Double check all validation error messages
 - [ ] Businesses
-    - [ ] Create a business `/businesses/create`
+    - [X] Create a business `/businesses/create`
         - The business should be related to the logged in user when creating
         - just logged in users should be able to visit this page
         - rows are inserted into the `businesses` table
-    - [ ] View an individual business `/businesses/{id}` (business profile page)
-    - [ ] View all businesses `/businesses`
-    - [ ] Edit businesses page `/businesses/{id}/edit` (access control)
+    - [X] View an individual business `/businesses/{id}` (business profile page)
+    - [X] View all businesses `/businesses`
+    - [X] Edit businesses page `/businesses/{id}/edit` (access control)
         - information in the database is changed
-    - [ ] Search businesses by title & description
+    - [X] Search businesses by title & description
     - [ ] View the listings a business has created on the individual business page
     - [ ] Delete a business (access control)
     - [ ] Double check all validation error messages
