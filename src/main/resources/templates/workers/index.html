@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ALL WORKER TEMP</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div class="container">
+    <h1>all workers</h1>
+    <!--<th:block th:each="worker, i : ${workers}">-->
+    <!--<th:block th:if="${i.index % 3 == 0}" th:utext="'&lt;div class=&quot;row&quot;&gt;'"/>-->
+    <div class="card col-sm-12 col-md-6 card-sizing">
+        <img class="card-img-top" src="https://source.unsplash.com/300x300/?employee?" alt="Card image cap" />
+        <div class="card-body">
+            <p class="card-text">
+            <h2>Lorem Ipsum</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu cursus euismod quis viverra nibh. Tristique et egestas quis ipsum suspendisse ultrices gravida. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Libero enim sed faucibus turpis in eu mi bibendum neque.
+            </p>
+            <!--<h2 th:text="${worker.firstName}"></h2>-->
+            <!--<p th:text="${worker.lastName}"></p>-->
+            </p>
+        </div>
+    </div>
+    <!--<th:block th:if="${i.index % 3 == 2 || i.count == i.size}" th:utext="'&lt;/div&gt;'"/>-->
+    <!--</th:block>-->
+</div>
+</body>
+</html>

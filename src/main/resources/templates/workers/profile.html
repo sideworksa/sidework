@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TEMP WORKER PROFILE</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div class="container">
+    <div class="normalize-page-margins">
+        <h1 class="text-center space-bottom" th:text="${user.username}">'s sidework</h1>
+        <div class="row">
+
+            <!-- worker profile img -->
+            <div class="col-sm-12 col-md-6 text-right">
+                <img src="https://source.unsplash.com/300x275/?employee?" alt="a worker" class="thumbnail img-full-width" />
+            </div><!-- Business profile img row -->
+
+            <!-- worker information row -->
+            <div class="col-sm-12 col-md-6">
+                <!-- info panel -->
+                <div class="panel panel-success space-bottom">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span th:text="${worker.firstName}"></span><span th:text="${worker.lastName}"></span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group business-info-list">
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-earphone btn-lg" aria-hidden="true"></span>
+                                <span th:text="${worker.phone}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-envelope btn-lg" aria-hidden="true"></span>
+                                <span th:text="${user.email}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-list-alt btn-lg" aria-hidden="true"></span>
+                                <span th:text="${worker.bio}"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="glyphicon glyphicon-briefcase btn-lg" aria-hidden="true"></span>
+                                <span th:text="${worker.skills}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- info panel -->
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Update password</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="Update_Password">Update Password:</label>
+                            <input id="Update_Password" name="Update_Password" class="form-control" type="password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Confirm_password">Confirm Password:</label>
+                            <input id="Confirm_password" name="Confirm_password" class="form-control" type="password"/>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block" value="Log In">submit</button>
+                        <button type="submit" class="btn btn-danger btn-block" value="Log In">deactivate account
+                        </button>
+                    </div>
+                </div><!-- password panel -->
+
+            </div>
+        </div> <!-- business information row -->
+
+    </div> <!-- normalize page margins -->
+</div> <!-- container -->
+</body>
+</html>
+
