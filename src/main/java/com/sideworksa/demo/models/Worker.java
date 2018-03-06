@@ -83,6 +83,14 @@ public class Worker {
         this.skills = skills;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Worker(String firstName, String lastName, String phone, String bio, String skills) {
         this.firstName = firstName;
         this.lastName = lastName;

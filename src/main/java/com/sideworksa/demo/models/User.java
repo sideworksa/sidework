@@ -73,9 +73,19 @@ public class User {
         this.business = business;
     }
 
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
+
     public User(Business business) {
 
         this.business = business;
+    }
+
+    public User(Worker worker) {
+
+        this.worker = worker;
     }
 
     public User(String username, String email, String password) {
