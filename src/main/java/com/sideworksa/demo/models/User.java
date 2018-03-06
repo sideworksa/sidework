@@ -73,6 +73,10 @@ public class User {
         this.business = business;
     }
 
+    public Worker getWorker() {
+        return worker;
+    }
+
     public void setWorker(Worker worker) {
         this.worker = worker;
     }
@@ -100,6 +104,14 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+    }
+
+    public User(String username, String email, String password, Business business, Worker worker) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.business = business;
+        this.worker = worker;
     }
 
     public User() {}
