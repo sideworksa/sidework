@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>BUSINESS CREATE TEMP</title>
+<head th:include="fragments/head :: mainHead('create an account')">
 </head>
 <body>
 <header>
@@ -10,7 +9,7 @@
 
 <div class="container">
     <div class="normalize-page-margins">
-        <h1 class="text-center">register</h1>
+        <h1 class="text-right title-emphasis">register</h1>
 
         <br/>
         <div class="form-wrapper">
@@ -65,9 +64,15 @@
                     <textarea id="info" name="businessInfo" th:field="*{businessInfo}" class="form-control" type="textarea" rows="3" placeholder="Inform others about your business"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label><a href="#">please upload establishment owner's verification letter of approval</a></label>
+
+                <div class="col-md-12 ">
+                    <h4 class="emphasis"><b><i>Business Owner Approval</i></b></h4>
+                    <div class="form-group more-bottom">
+                        <span class="glyphicon glyphicon-check"></span><label for="exampleInputFile"> upload signed letter of verification</label>
+                        <input class="center-item" type="file" id="exampleInputFile"/>
+                    </div>
                 </div>
+
 
                 <br/>
                 <div class="col-sm-12">

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>TEMP BUSINESS PROFILE</title>
-</head>
+<head th:include="fragments/head :: mainHead('your profile')"></head>
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 
@@ -21,7 +19,7 @@
                 <!-- info panel -->
                 <div class="panel panel-success space-bottom">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Business info</h3>
+                        <h3 class="panel-title">business info</h3>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group business-info-list">
@@ -38,7 +36,7 @@
                                 <span th:text="${user.email}"></span>
                             </li>
                             <li class="list-group-item">
-                                <span class="glyphicon glyphicon-italic btn-lg" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-list-alt btn-lg" aria-hidden="true"></span>
                                 <span th:text="${business.businessInfo}"></span>
                             </li>
                         </ul>
@@ -63,7 +61,6 @@
                         </button>
                     </div>
                 </div><!-- password panel -->
-
             </div>
         </div> <!-- business information row -->
 
