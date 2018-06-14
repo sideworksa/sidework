@@ -22,7 +22,6 @@
                         <a class="nav-link" th:href="@{/workers/profile}" th:text="${#authentication.principal.username}"></a>
                     </li>
                 </ul>
-<!-- -------------------------------------- -->
 
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="!isAuthenticated()">
