@@ -29,7 +29,6 @@ public class BusinessesController {
     public String showCreateBusinessForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("business", new Business());
-
         return "businesses/create";
     }
 

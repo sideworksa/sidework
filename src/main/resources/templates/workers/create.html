@@ -8,35 +8,35 @@
 
 <div class="container">
     <div class="normalize-page-margins">
-        <h1 class="text-center">register</h1>
+        <h1 class="text-right title-emphasis">register</h1>
 
         <br/>
         <div class="form-wrapper">
-            <!--Display the form for creating a new business-->
-                <form th:action="@{/workers/create}" method="post" th:object="${user}">
+            <!--Display the form for creating a new worker-->
+                <form th:action="@{/workers/create}" method="post" th:object="${worker}">
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="first_name">first name</label>
-                        <input id="first_name" th:value="${worker.firstName}" name="firstName" class="form-control" type="text" placeholder="Cameron"/>
+                        <input id="first_name" th:value="*{firstName}" name="firstName" class="form-control" type="text" placeholder="Cameron"/>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="last_name">last name</label>
-                        <input id="last_name" th:value="${worker.lastName}" name="lastName" class="form-control" type="text" placeholder="Howe"/>
+                        <input id="last_name" th:value="*{lastName}" name="lastName" class="form-control" type="text" placeholder="Howe"/>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="username">username</label>
-                        <input id="username" th:field="*{username}" name="username" class="form-control" type="text" placeholder="myUsername123"/>
+                        <input id="username" th:field="${user.username}" name="username" class="form-control" type="text" placeholder="myUsername123"/>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="email">email</label>
-                        <input id="email" th:field="*{email}" name="email" class="form-control" type="email" placeholder="user@email.com"/>
+                        <input id="email" th:field="${user.email}" name="email" class="form-control" type="email" placeholder="user@email.com"/>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="password">password</label>
-                        <input id="password" th:field="*{password}" name="password" class="form-control" type="password" placeholder="superSecretPassword123"/>
+                        <input id="password" th:field="${user.password}" name="password" class="form-control" type="password" placeholder="superSecretPassword123"/>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
@@ -46,17 +46,17 @@
 
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="phone">phone</label>
-                        <input id="phone" th:value="${worker.phone}" class="form-control" type="tel" placeholder="210-867-5309"/>
+                        <input id="phone" th:value="*{phone}" class="form-control" type="tel" placeholder="210-867-5309"/>
                     </div>
 
                     <div class="col-xs-12 form-group">
                         <label for="skills">skills</label>
-                        <textarea id="skills" name="skills" th:value="${worker.skills}" class="form-control" placeholder="List off your experience and job titles separated by commas. Include any accolades or anything you think we should know."></textarea>
+                        <textarea id="skills" name="skills" th:value="*{skills}" class="form-control" placeholder="List off your experience and job titles separated by commas. Include any accolades or anything you think we should know."></textarea>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
                         <label for="bio">bio</label>
-                        <textarea id="bio" name="bio" th:value="${worker.bio}" class="form-control" placeholder="Tell us a little bit about yourself: who you are, where you're from, what your're about, etc."></textarea>
+                        <textarea id="bio" name="bio" th:value="*{bio}" class="form-control" placeholder="Tell us a little bit about yourself: who you are, where you're from, what your're about, etc."></textarea>
                     </div>
 
                     <br/>
