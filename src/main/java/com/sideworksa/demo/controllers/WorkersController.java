@@ -4,6 +4,7 @@ import com.sideworksa.demo.models.User;
 import com.sideworksa.demo.models.Worker;
 import com.sideworksa.demo.repositories.UserRepository;
 import com.sideworksa.demo.repositories.WorkerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ public class WorkersController {
     private final UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
     public WorkersController(WorkerRepository workerRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.workerRepository = workerRepository;
         this.userRepository = userRepository;
@@ -56,14 +58,14 @@ public class WorkersController {
         return "workers/index";
     }
 
-    // show specific worker's profile by id
+    // show profile by id for specific worker
     @GetMapping("/workers/profile/{id}")
-    public String showWorkerProfile(@PathVariable long id, Model viewAndModel) { // Add a long id parameter
+    public String showWorkerProfile(@PathVariable long id, Model model) { // Add a long id parameter
         User user = userRepository.findOne(id);
         Worker worker = workerRepository.findByUser(user);
 
-        viewAndModel.addAttribute("user", user);
-        viewAndModel.addAttribute("worker", worker);
+        model.addAttribute("user", user);
+        model.addAttribute("worker", worker);
         return "workers/profile";
     }
 
@@ -72,6 +74,31 @@ public class WorkersController {
     public String viewWorkerProfile() {
         return "workers/profile";
     }
+//
+//    // view worker's profile edit-form
+//    @GetMapping("/workers/profile/{id}/edit")
+//    public String showEditWorkerProfile(@PathVariable long id, Model viewModel) {
+//        User user = userRepository.findOne(id);
+//        Worker worker = workerRepository.findByUser(user);
+//
+//        viewModel.addAttribute("user", user);
+//        viewModel.addAttribute("worker", worker);
+//
+//        return "workers/profile/{id}/edit";
+//    }
+//
+//    // edit worker's profile using CRUD
+//    @PostMapping("/workers/profile/{id}/edit")
+//    public String editWorkerProfile(@ModelAttribute User user, @ModelAttribute Worker worker) {
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        user.setPassword(currentUser.getPassword());
+//
+//        userRepository.save(user);
+//        workerRepository.save(worker);
+//
+//        return "redirect:/workers/profile/{id}";
+//    }
 
 
 
