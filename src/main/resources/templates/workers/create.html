@@ -11,17 +11,20 @@
         <h1 class="text-right title-emphasis">register</h1>
 
         <br/>
-        <div class="form-wrapper">
+        <div class="">
             <!--Display the form for creating a new worker-->
                 <form th:action="@{/workers/create}" method="post" th:object="${worker}">
+                        <label for="first_name">first name
                     <div class="col-xs-12 col-md-6 form-group">
-                        <label for="first_name">first name</label>
-                        <input id="first_name" th:value="*{firstName}" name="firstName" class="form-control" type="text" placeholder="Cameron"/>
+                            <input id="first_name" th:value="*{firstName}" name="firstName" class="form-control" type="text" placeholder="Cameron"/>
                     </div>
+                        </label>
 
-                    <div class="col-xs-12 col-md-6 form-group">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
                         <label for="last_name">last name</label>
                         <input id="last_name" th:value="*{lastName}" name="lastName" class="form-control" type="text" placeholder="Howe"/>
+                        </div>
                     </div>
 
                     <div class="col-xs-12 col-md-6 form-group">
@@ -67,5 +70,8 @@
         </div> <!-- form wrapper -->
     </div> <!-- normalize page margins -->
 </div> <!-- container -->
+<div th:replace="fragments/scripts :: scripts">
+    <!-- remember to bring in jquery scripts through fragments -->
+</div>
 </body>
 </html>
