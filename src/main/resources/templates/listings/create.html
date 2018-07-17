@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head :: mainHead('Create New Listing')"></head>
+<body>
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div class="container">
+    <!-- Generate the form to create a new job listing -->
+    <form th:action="@{/listings/create}" method="post" th:object="${listing}">
+        <div class="form-group">
+            <label for="title">title</label>
+            <input id="title" name="title" th:value="${title}" class="form-control" type="text"/>
+        </div>
+
+        <div class="form-group">
+            <label for="description">description</label>
+            <input id="description" name="description" th:value="${description}" class="form-control"
+                   type="text"/>
+        </div>
+
+        <br/>
+
+        <input type="submit" class="btn btn-success btn-block"/>
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+<!-- remember to bring in jquery scripts through fragments -->
+
+</body>
+</html>

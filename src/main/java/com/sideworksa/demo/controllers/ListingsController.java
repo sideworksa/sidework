@@ -56,13 +56,13 @@ public class ListingsController {
     }
 
     //  show specific job listing
-    @GetMapping("/listings/{id}")
+    @GetMapping("/listings/listing/{id}")
     public String viewSingleListing(@PathVariable long id, Model model) {
         Listing listing = listingRepository.findOne(id);
 
         model.addAttribute("listing", listing);
 
-        return "listings/";
+        return "listings/listing";
     }
 
     // search for job listing
