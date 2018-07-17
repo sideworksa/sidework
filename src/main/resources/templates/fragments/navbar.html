@@ -15,11 +15,11 @@
                 <ul class="nav navbar-nav emphasis">
 
 <!-- NEED TO FIX BUSINESS PROFILE PAGE LINK -->
-                    <!--<li sec:authorize="isAuthenticated()">-->
-                        <!--<a class="nav-link" th:href="@{/businesses/profile}" th:text="${#authentication.principal.username}"></a>-->
-                    <!--</li>-->
                     <li sec:authorize="isAuthenticated()">
-                        <a class="nav-link" th:href="@{/workers/profile}" th:text="${#authentication.principal.username}"></a>
+                        <a class="nav-link" th:href="@{/businesses/profile}" th:text="${#authentication.principal.username}"></a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/workers/profile/}" th:text="${#authentication.principal.username}"></a>
                     </li>
                 </ul>
 

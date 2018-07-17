@@ -1,8 +1,301 @@
-.title-emphasis {
-    color: #73B566;
-    text-shadow:2px 2px grey;
+.form-wrapper {
+    max-width: 70%;
+    margin: 0 auto;
 }
 
-.emphasis {
-    color: #73B566;
+.normalize-page-margins {
+    /*top - right - bot - left*/
+    margin: 0 5% 10% 5%;
 }
+
+.card-sizing {
+    max-width: 300px;
+}
+
+.fill-parent {
+    width: 100%;
+    height: 100%;
+}
+
+.space-bottom {
+    /*use to put space between text headings and content*/
+    margin-bottom: 10vh;
+}
+
+.space-top {
+    margin-top: 10vh;
+}
+
+.valign {
+    margin-top: 15%;
+}
+
+.border-none {
+    border: none !important;
+}
+.center-item {
+    margin: 0 auto;
+}
+.more-bottom {
+    padding-bottom: 50px;
+}
+
+
+/* Media Queries
+-------------------------------------------------- */
+@media screen and (max-width:500px) {
+    .index-link {
+        property: value;
+    }
+}
+
+@media screen and (min-width:500px) {
+    .index-link {
+        property: value;
+    }
+}
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+.sidework-footer{
+    display: block;
+    font-family: 'arial';
+    font-size: 2em;
+    /*text-align: left;*/
+    color: #41663a;
+    text-shadow: 2px 2px #4c4641;
+}
+
+
+/*============================================*/
+/*NAVBAR*/
+/*============================================*/
+
+/*strong {*/
+/*font-size: 10px;*/
+/*}*/
+a.navbar-brand {
+    font-size: 15px;
+}
+
+
+
+/*============================================*/
+/*LOGIN*/
+/*============================================*/
+
+#showcase {
+    background: url('../img/boxesblackwhitebackground.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+
+
+
+/* Landing Page
+-------------------------------------------------- */
+
+.showcase {
+    /*background: url('../img/boxesblackwhitebackground.jpg');*/
+    background-size: cover;
+    background-position: center;
+}
+
+.showcase-overlay {
+    position: absolute;
+    top: 0;
+    z-index: -999;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 100%;
+}
+
+.splash-icon {
+    font-size: 20em;
+    color: #2b2d2a;
+    padding: 6px;
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+.splash-box {
+    width: 22em;
+    color: #41663a;
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+.splash-link {
+    margin-left: 0;
+    vertical-align: middle;
+    text-align: center;
+
+}
+
+.center-splash-links {
+    margin-top: 10vh;
+}
+
+.sidework-link {
+    display: block;
+    font-family: 'arial';
+    margin-left: -20px;
+    font-size: 6em;
+    text-align: center;
+    color: #41663a;
+    text-shadow: 2px 2px #4c4641;
+}
+
+.sidework-link:hover {
+    text-decoration: none;
+    color: #69d069;
+}
+
+
+/* About Us
+-------------------------------------------------- */
+
+.name {
+    text-align: center;
+}
+div.col-xs-6.col-md-6 {
+    text-align: center;
+}
+
+.profilePicture {
+    /*height: 500px;*/
+    width: 350px;
+    padding:1px;
+    border:1px solid #021a40;
+    margin:auto;
+}
+
+
+
+/* Worker Registration
+-------------------------------------------------- */
+
+.radio-btn {
+    margin-top: 25px;
+    margin-right: 25px;
+    margin-left: 5px;
+}
+
+/* Worker Profile
+-------------------------------------------------- */
+
+.title {
+    text-align: center;
+}
+.floor {
+    text-decoration: underline;
+}
+.kitchen {
+    text-decoration: underline;
+}
+.bar {
+    text-decoration: underline;
+}
+.r {
+    text-align: center;
+}
+a.navbar-brand {
+    font-size: 40px;
+
+}
+
+
+
+
+/* Business Registration
+-------------------------------------------------- */
+
+
+.navbar.navbar-default {
+    background-color: white;
+}
+
+a.navbar-brand {
+    font-size: 40px;
+
+}
+
+a {
+    margin-left: 45px;
+}
+
+
+h1 {
+    text-align: right;
+    /*text-decoration: ;*/
+    font-size: 40px;
+    /*text-justify: inter-cluster;*/
+    margin-right: auto;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+
+
+div.row {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Business Profile
+-------------------------------------------------- */
+
+.business-info-list {
+    margin: -16px;
+}
+
+.img-full-width {
+    width: 100%;
+}
+
+.job-listing-link {
+    background: none;
+}
+
+.job-listing-link:hover {
+    text-decoration: none;
+}
+
+/* Businesses Index
+-------------------------------------------------- */
+
+.business-img {
+    /*use max height here to override*/
+    max-height: 200px;
+}
+
+
+

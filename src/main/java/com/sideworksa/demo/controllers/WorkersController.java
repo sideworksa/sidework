@@ -1,17 +1,28 @@
 package com.sideworksa.demo.controllers;
 
 import com.sideworksa.demo.models.User;
+import com.sideworksa.demo.models.UserWithRoles;
 import com.sideworksa.demo.models.Worker;
 import com.sideworksa.demo.repositories.UserRepository;
 import com.sideworksa.demo.repositories.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
+import java.util.Collections;
 
 @Controller
 public class WorkersController {
@@ -48,6 +59,18 @@ public class WorkersController {
         return "redirect:/login";
     }
 
+    // user authentication
+    private void authenticate(User newUser) {
+        UserDetails userDetails = new UserWithRoles(newUser, Collections.emptyList());
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(auth);
+    }
+
     // show all workers
     @GetMapping("/workers/index")
     public String showAllWorkers(Model viewAndModel) {
@@ -71,24 +94,37 @@ public class WorkersController {
 
     // view logged-in worker's profile
     @GetMapping("/workers/profile")
-    public String viewWorkerProfile() {
+    public String workerProfile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (user.getId() == 0) {
+            return "redirect:/login";
+        }
+
+        user = userRepository.findOne(user.getId());
+
+        model.addAttribute("user", user);
         return "workers/profile";
     }
-//
-//    // view worker's profile edit-form
-//    @GetMapping("/workers/profile/{id}/edit")
-//    public String showEditWorkerProfile(@PathVariable long id, Model viewModel) {
-//        User user = userRepository.findOne(id);
-//        Worker worker = workerRepository.findByUser(user);
-//
-//        viewModel.addAttribute("user", user);
-//        viewModel.addAttribute("worker", worker);
-//
-//        return "workers/profile/{id}/edit";
-//    }
-//
-//    // edit worker's profile using CRUD
-//    @PostMapping("/workers/profile/{id}/edit")
+
+
+    // view worker's profile edit-form
+    @GetMapping("/workers/edit")
+    public String showEditWorkerProfile(Model viewModel) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (user.getId() == 0) {
+            return "redirect:/login";
+        }
+        user = userRepository.findOne(user.getId());
+
+        viewModel.addAttribute("user", user);
+
+        return "workers/edit";
+    }
+
+    // edit worker's profile using CRUD
+    @PostMapping("/workers/edit")
 //    public String editWorkerProfile(@ModelAttribute User user, @ModelAttribute Worker worker) {
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //
@@ -96,9 +132,75 @@ public class WorkersController {
 //
 //        userRepository.save(user);
 //        workerRepository.save(worker);
-//
-//        return "redirect:/workers/profile/{id}";
-//    }
+
+
+        public String editWorkerProfile(@Valid User user, Errors validation, Model model) {
+
+            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (currentUser.getId() == 0) {
+                return "redirect:/login";
+            }
+
+
+            // update password
+            if (!user.getPassword().equals("")) {
+
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+                if ((!passwordEncoder.matches(user.getPassword(), currentUser.getPassword()))) {
+                    validation.rejectValue(
+                            "password",
+                            "password",
+                            "please enter in a correct password"
+                    );
+
+                } else {
+
+                    if (user.getNewPassword().equals("")) {
+                        validation.rejectValue(
+                                "newPassword",
+                                "newPassword",
+                                "your password cannot be blank"
+                        );
+
+                    } else if (!user.getNewPassword().equals(user.getConfirmNewPassword())) {
+                        validation.rejectValue(
+                                "confirmNewPassword",
+                                "confirmNewPassword",
+                                "passwords do not match"
+                        );
+
+
+                    } else {
+                        String hashPassword = passwordEncoder.encode(user.getNewPassword());
+                        user.setPassword(hashPassword);
+                    }
+
+                }
+
+
+                // if user does not want to change password
+            } else
+
+            {
+                // use same password
+                user.setPassword(currentUser.getPassword());
+            }
+
+
+            if(validation.hasErrors())
+
+            {
+                model.addAttribute("errors", validation);
+                model.addAttribute("user", user);
+                return "users/edit-profile";
+            }
+
+            userRepository.save(user);
+
+
+            return "redirect:/workers/profile";
+    }
 
 
 
