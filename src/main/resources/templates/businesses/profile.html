@@ -50,12 +50,8 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group business-info-list">
-                            <!-- erase next line in production -->
                                 <th:block th:each="listing : ${listings}">
-                                <li class="list-group-item">
-                                    <span>Lorem ipsum</span>
-                                </li>
-                                <a th:href="@{'/listings/single/' + ${listing.id}}" class="list-group-item">
+                                <a th:href="@{'/listings/listing/' + ${listing.id}}" class="list-group-item">
                                 <span th:text="${listing.title}"></span>
                                 </a>
                                 <p th:text="${listing.description}"></p>
