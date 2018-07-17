@@ -6,7 +6,7 @@
 
 <div class="container">
     <h1>all businesses</h1>
-    <form class="navbar-form navbar-right" action="/search">
+    <form class="navbar-form navbar-right" action="/businesses/search">
         <div class="form-group">
             <input type="text" name="searchKeyword" class="form-control" placeholder="search" />
         </div>
@@ -14,15 +14,15 @@
     </form>
     <th:block th:each="business, i : ${businesses}">
     <th:block th:if="${i.index % 3 == 0}" th:utext="'&lt;div class=&quot;row&quot;&gt;'"/>
-    <div class="card col-sm-12 col-md-6 card-sizing">
-        <img class="card-img-top" src="https://source.unsplash.com/300x300/?business" alt="Card image cap" />
-        <div class="card-body">
-            <p class="card-text">
-            <h2 th:text="${business.businessName}"></h2>
-            <p th:text="${business.businessInfo}"></p>
-            </p>
+        <div class="card col-sm-12 col-md-6 card-sizing">
+            <img class="card-img-top" src="https://source.unsplash.com/300x300/?business" alt="Card image cap" />
+            <div class="card-body">
+                <p class="card-text">
+                <h2 th:text="${business.businessName}"></h2>
+                <p th:text="${business.businessInfo}"></p>
+                </p>
+            </div>
         </div>
-    </div>
     <th:block th:if="${i.index % 3 == 2 || i.count == i.size}" th:utext="'&lt;/div&gt;'"/>
     </th:block>
 </div>

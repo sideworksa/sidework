@@ -43,6 +43,30 @@
                     </div>
                 </div><!-- info panel -->
 
+
+                <div class="panel panel-warning space-bottom">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Job Listings</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group business-info-list">
+                            <!-- erase next line in production -->
+                                <th:block th:each="listing : ${listings}">
+                                <li class="list-group-item">
+                                    <span>Lorem ipsum</span>
+                                </li>
+                                <a th:href="@{'/listings/single/' + ${listing.id}}" class="list-group-item">
+                                <span th:text="${listing.title}"></span>
+                                </a>
+                                <p th:text="${listing.description}"></p>
+                                </th:block>
+                            <li class="btn btn-warning btn-block">
+                                <a class="btn-warning job-listing-link panel-title" th:href="@{/listings/create}">Add new listing</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!-- listings panel -->
+
                 <div class="panel panel-danger">
                     <div class="panel-heading">
                         <h3 class="panel-title">Update password</h3>

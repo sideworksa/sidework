@@ -13,33 +13,33 @@
         <br/>
         <div class="">
             <!--Display the form for editing an existing worker's profile-->
-            <form th:action="@{/user/edit(id=${user.id})}" method="post" th:object="${user}">
+            <form th:action="@{/worker/edit(id=${user.worker.id})}" method="post" th:object="${worker}">
                 <label for="first_name">first name
                     <div class="col-xs-12 col-md-6 form-group">
-                        <input id="first_name" th:field="${worker.firstName}" name="firstName" class="form-control" type="text" />
+                        <input id="first_name" name="firstName" th:field="*{firstName}" class="form-control" type="text" />
                     </div>
                 </label>
 
                 <div class="col-xs-12 col-md-6">
                     <div class="form-group">
                         <label for="last_name">last name</label>
-                        <input id="last_name" th:field="${worker.lastName}" name="lastName" class="form-control" type="text" />
+                        <input id="last_name" name="lastName" th:field="*{lastName}"  class="form-control" type="text" />
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-md-6 form-group">
                     <label for="username">username</label>
-                    <input id="username" th:field="*{username}" name="username" class="form-control" type="text" />
+                    <input id="username" name="username" th:field="${user.username}" class="form-control" type="text" />
                 </div>
 
                 <div class="col-xs-12 col-md-6 form-group">
                     <label for="email">email</label>
-                    <input id="email" th:field="*{email}" name="email" class="form-control" type="email" />
+                    <input id="email" name="email" th:field="${user.email}" class="form-control" type="email" />
                 </div>
 
                 <div class="col-xs-12 col-md-6 form-group">
                     <label for="password">password</label>
-                    <input id="password" th:field="*{password}" name="password" class="form-control" type="password" />
+                    <input id="password" name="password" th:field="${user.password}"  class="form-control" type="password" />
                 </div>
 
                 <div class="col-xs-12 col-md-6 form-group">
@@ -49,7 +49,7 @@
 
                 <div class="col-xs-12 col-md-6 form-group">
                     <label for="phone">phone</label>
-                    <input id="phone" th:field="${worker.phone}" class="form-control" type="tel" />
+                    <input id="phone" name="workerPhone" th:field="${worker.phone}" class="form-control" type="tel" />
                 </div>
 
                 <div class="col-xs-12 form-group">
@@ -64,9 +64,9 @@
 
                 <br/>
                 <div class="col-sm-12">
-                    <!--<form method="post" th:action="@{/workers/{id}/edit(id=${worker.id})}">-->
-                        <!--<input type="submit" class="btn btn-block btn-success" value="update profile" />-->
-                    <!--</form>-->
+                    <form method="post" th:action="@{/worker/{id}/edit(id=${user.worker.id})}">
+                        <input type="submit" class="btn btn-block btn-success" value="update profile" />
+                    </form>
                 </div>
             </form>
         </div> <!-- form wrapper -->

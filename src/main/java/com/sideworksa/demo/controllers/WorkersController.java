@@ -109,7 +109,7 @@ public class WorkersController {
 
 
     // view worker's profile edit-form
-    @GetMapping("/workers/edit")
+    @GetMapping("/workers/{id}/edit")
     public String showEditWorkerProfile(Model viewModel) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -132,9 +132,9 @@ public class WorkersController {
 //
 //        userRepository.save(user);
 //        workerRepository.save(worker);
+//
 
-
-        public String editWorkerProfile(@Valid User user, Errors validation, Model model) {
+    public String editWorkerProfile(@Valid User user, Errors validation, Model model) {
 
             User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             if (currentUser.getId() == 0) {
@@ -193,7 +193,7 @@ public class WorkersController {
             {
                 model.addAttribute("errors", validation);
                 model.addAttribute("user", user);
-                return "users/edit-profile";
+                return "workers/edit";
             }
 
             userRepository.save(user);
