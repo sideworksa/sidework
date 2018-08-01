@@ -48,18 +48,17 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Job Listings</h3>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-group business-info-list">
-                                <th:block th:each="listing : ${listings}">
-                                <a th:href="@{'/listings/listing/' + ${listing.id}}" class="list-group-item">
-                                <span th:text="${listing.title}"></span>
-                                </a>
-                                <p th:text="${listing.description}"></p>
-                                </th:block>
-                            <li class="btn btn-warning btn-block">
+                    <div class="list-group business-info-list" th:each="listing : ${listings}">
+                        <div class="row">
+                            <div class="col s8 offset-s2">
+                                <h1 th:text="${listing.getTitle()}"></h1>
+                                <p th:text="${listing.getDescription()}"></p>
+                                <a th:href="@{/listings/{listingId}/edit(listingId=${listing.getId()})}">edit</a>
+                            </div>
+                        </div>
+                            <div class="btn btn-warning btn-block">
                                 <a class="btn-warning job-listing-link panel-title" th:href="@{/listings/create}">Add new listing</a>
-                            </li>
-                        </ul>
+                            </div>
                     </div>
                 </div> <!-- listings panel -->
 

@@ -1,8 +1,10 @@
 package com.sideworksa.demo.controllers;
 
 import com.sideworksa.demo.models.Business;
+import com.sideworksa.demo.models.Listing;
 import com.sideworksa.demo.models.User;
 import com.sideworksa.demo.repositories.BusinessRepository;
+import com.sideworksa.demo.repositories.ListingRepository;
 import com.sideworksa.demo.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,15 +14,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class BusinessesController {
     private final BusinessRepository businessRepository;
     private final UserRepository userRepository;
+    private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
 
-    public BusinessesController(BusinessRepository businessRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public BusinessesController(BusinessRepository businessRepository, UserRepository userRepository, ListingRepository listingRepository, PasswordEncoder passwordEncoder) {
         this.businessRepository = businessRepository;
         this.userRepository = userRepository;
+        this.listingRepository = listingRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -61,8 +67,12 @@ public class BusinessesController {
     public String showBusinessProfile(@PathVariable long id, Model model) {
         User user = userRepository.findOne(id);
         Business business = businessRepository.findByUser(user);
+        List<Listing> listings = listingRepository.findAllByBusiness(id);
+
         model.addAttribute("user", user);
         model.addAttribute("business", business);
+        model.addAttribute("listings", listings);
+
 
         return "businesses/profile";
     }
