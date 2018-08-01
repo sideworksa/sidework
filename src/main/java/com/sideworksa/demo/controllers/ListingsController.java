@@ -43,7 +43,7 @@ public class ListingsController {
         Business business = businessRepository.findByUser(user);
         listing.setBusiness(business);
         listingRepository.save(listing);
-        return "redirect:/businesses/profile/" + user.getId();
+        return "redirect:/listings/listing/" + listing.getId();
     }
 
     // show all job listings

@@ -7,26 +7,24 @@
     <a class="navbar-brand" href="/">sidework</a>
     <div class="container-fluid navbar-inverse" id="nav-container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <a class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">
-                <!--<img src="https://www.facebook.com/profile/pic.php?cuid=AYg3gEL1KKuvB5AuN295s1JhEY3mOdq6MCS5z0Rf9KChIERJqnNEBcwnj_Qdr88DUGRIXd4yvjerYw3dGRttIYhzLfYSCVIItn6j2RG8vRLlsQ&square_px=64" width = "155px"/>-->
             </a>
+
         </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right navbar-inverse">
                 <li sec:authorize="!isAuthenticated()">
                     <a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>login</a>
                 </li>
 
                 <li sec:authorize="!isAuthenticated()">
-                    <a href="/">register</a>
+                    <a href="/">sign up</a>
                 </li>
 
 
