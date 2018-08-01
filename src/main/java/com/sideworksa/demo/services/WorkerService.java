@@ -16,6 +16,10 @@ public class WorkerService {
         this.workerRepository = workerRepository;
     }
 
+    public void save(Worker worker) {
+        workerRepository.save(worker);
+    }
+
     public List<Worker> searchForWorker(String name) {
         return workerRepository.search(name);
     }

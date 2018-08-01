@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head :: mainHead('all listings')"></head>
+<body>
+<header>
+    <nav th:replace="fragments/navbar :: mainNavbar"></nav>
+</header>
+
+<div class="container">
+    <h1>all listings</h1>
+        <form class="navbar-form navbar-right" action="/listings/search/">
+            <div class="form-group">
+                <input type="text" name="searchKeyword" class="form-control" placeholder="search"/>
+            </div>
+            <button type="submit" class="btn btn-primary">search</button>
+        </form>
+        <!--<div class="row">-->
+        <th:block th:each="listing, i : ${listings}">
+        <th:block th:if="${i.index % 3 == 0}" th:utext="'&lt;div class=&quot;row&quot;&gt;'"/>
+            <div class="card col-sm-12 col-md-6 card-sizing">
+                <img class="card-img-top" src="https://source.unsplash.com/300x300/?business" alt="Card image cap" />
+                <div class="card-body">
+                    <p class="card-text">
+                    <h2 th:text="${listing.title}"></h2>
+                    <p th:text="${listing.description}"></p>
+                    </p>
+                </div>
+            </div>
+        <th:block th:if="${i.index % 3 == 2 || i.count == i.size}" th:utext="'&lt;/div&gt;'"/>
+        </th:block>
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<th:block th:each="i : ${#numbers.sequence(1, 20)}">-->
+                <!--<div class="col-sm-6 col-md-4">-->
+                    <!--<div class="thumbnail">-->
+                        <!--<img class="fill-parent business-img"-->
+                             <!--src="https://source.unsplash.com/300x275/?work?"-->
+                             <!--alt="..." />-->
+                        <!--<div class="caption">-->
+
+                            <!--<th:block th:each="listing, i : ${listings}">-->
+                            <!--<th:block th:if="${i.index % 3 == 0}"/>-->
+                            <!--<div class="row">-->
+                            <!--<div class="col-xs-12 col-md-3">-->
+                            <!--<a th:href="@{'/listings/listing/' + ${listing.id}}">-->
+                            <!--<h2 th:text="${listing.title}"></h2>-->
+                            <!--</a>-->
+                            <!--<p th:text="${listing.description}"></p>-->
+                            <!--<p th:text="${listing.business.businessName}"></p>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<th:block th:if="${i.index % 3 == 2 || i.count == i.size}"/>-->
+                            <!--</th:block>-->
+                            <!--<button class="btn btn-primary btn-success" role="button">select</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</th:block>-->
+        <!--</div>-->
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+<!-- remember to bring in jquery scripts through fragments -->
+
+</body>
+</html>

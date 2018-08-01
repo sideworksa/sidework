@@ -16,7 +16,7 @@
             <form th:action="@{/businesses/create}" method="post" th:object="${business}">
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="username">username</label>
-                    <input id="username" th:field="${user.username}" name="username" class="form-control" type="text" placeholder="tacobody"/>
+                    <input id="username" name="username" th:field="${user.username}" class="form-control" type="text" placeholder="tacobody"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
@@ -81,5 +81,8 @@
         </div> <!-- form wrapper -->
     </div> <!-- normalize page margins -->
 </div> <!-- container -->
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+
 </body>
 </html>

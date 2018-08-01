@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>TEMPORARY INDEX PAGE</title>
-</head>
+<head th:include="fragments/head :: mainHead('Sidework')"></head>
 <body class="showcase">
+<nav th:replace="fragments/navbar :: mainNavbar" type="hidden"></nav>
+<div class="showcase-overlay"></div>
+
 
 <div class="container">
-    <p><i>make sure you finish your <a href="https://github.com/sideworksa/sidework/projects/1" class="sidework-link"><span class="col-xs-12">sidework</span></a>
-    </i></p>
+    <!--<span class="col-xs-12">sidework</span>-->
+    <div class="center-splash-links container-fluid">
+        <div class="row">
+            <div class="index-link col-sm-6">
+                <div class="splash-box center-block">
+                    <span class="glyphicon glyphicon-piggy-bank splash-icon" aria-hidden="true"></span>
+                    <a href="/workers/create" class="btn btn-lg btn-success btn-block splash-link">pick up shifts</a>
+                    <!--<a href="/howitworks" class="btn btn-lg btn-success btn-block splash-link">pick up shifts</a>-->
+                </div>
+
+            </div>
+            <div class="index-link col-sm-6 container-fluid">
+                <div class="splash-box center-block">
+                    <span class="button-color glyphicon glyphicon-calendar splash-icon" aria-hidden="true"></span>
+                    <a href="/businesses/create" class="btn btn-lg btn-success btn-block splash-link">get shifts covered</a>
+                    <!--<a href="/howitworks" class="btn btn-lg btn-success btn-block splash-link">get shifts covered</a>-->
+                </div>
+
+            </div>
+        </div><!-- splash link boxes -->
+    </div>
 </div> <!-- container -->
 
 </body>

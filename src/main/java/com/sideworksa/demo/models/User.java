@@ -24,6 +24,15 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+
+    // password validation
+    private transient String confirmPassword;
+
+    private transient String newPassword;
+
+    private transient String confirmNewPassword;
+
+
     // connecting User profile to Business
     @OneToOne
     private Business business;
@@ -64,6 +73,31 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmNewPassword() {
+        return confirmNewPassword;
+    }
+
+    public void setConfirmNewPassword(String confirmNewPassword) {
+        this.confirmNewPassword = confirmNewPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
 
     public Business getBusiness() {
         return business;
