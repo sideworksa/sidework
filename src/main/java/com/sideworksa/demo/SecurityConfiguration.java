@@ -21,6 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -29,10 +30,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         ;
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard") // class notes - user's home page, it can be any URL. Cannot configure 2 different URLs here
@@ -57,10 +58,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/businesses/edit/{id}",
+                        "/businesses/{id}/edit",
                         "/listings/create",  // only authenticated users can create ads
 //                        "/listings/edit", // only authenticated users can create ads
-                        "/workers/edit/{id}" // only authenticated users can edit their profile
+                        "/workers/{id}/edit" // only authenticated users can edit their profile
                 )
                 .authenticated()
         ;

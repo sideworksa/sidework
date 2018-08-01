@@ -3,41 +3,95 @@
 <head></head>
 <body>
 
-<nav class="navbar fixed-top navbar-inverse" th:fragment="mainNavbar">
+<nav th:fragment="mainNavbar" class="navbar navbar-default fixed-top navbar-inverse">
     <a class="navbar-brand" href="/">sidework</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav xs-auto">
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-center">
-                    <li><a th:href="@{/workers/index}">workers</a></li>
-                    <li><a th:href="@{/businesses/index}">businesses</a></li>
-                    <li><a th:href="@{/listings/index}">listings</a></li>
-                </ul>
-                <ul class="nav navbar-nav emphasis">
+    <div class="container-fluid navbar-inverse" id="nav-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <!--<img src="https://www.facebook.com/profile/pic.php?cuid=AYg3gEL1KKuvB5AuN295s1JhEY3mOdq6MCS5z0Rf9KChIERJqnNEBcwnj_Qdr88DUGRIXd4yvjerYw3dGRttIYhzLfYSCVIItn6j2RG8vRLlsQ&square_px=64" width = "155px"/>-->
+            </a>
+        </div>
 
-<!-- NEED TO FIX BUSINESS PROFILE PAGE LINK -->
-                    <li sec:authorize="isAuthenticated()">
-                        <a class="nav-link" th:href="@{/businesses/profile}" th:text="${#authentication.principal.username}"></a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()">
-                        <a class="nav-link" th:href="@{/workers/profile/}" th:text="${#authentication.principal.username}"></a>
-                    </li>
-                </ul>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-inverse">
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>login</a>
+                </li>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li sec:authorize="!isAuthenticated()">
-                        <a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Login</a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()">
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="btn-link btn" style="margin-top: 8px"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Logout</button>
-                        </form>
-                    </li>
-                </ul>
-             </div><!-- navbar-collapse -->
-        </ul>
-    </div> <!-- container -->
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/">register</a>
+                </li>
+
+
+                <li sec:authorize="isAuthenticated()" role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+						<span sec:authorize="isAuthenticated()">
+							<span sec:authentication="principal.username"></span>
+						</span>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="text-center"><a th:href="@{/workers/index}"><span class="glyphicon glyphicon-user"></span> workers</a></li>
+                        <li class="text-center"><a th:href="@{/businesses/index}"><span class="glyphicon glyphicon-home"></span> businesses</a></li>
+                        <li class="text-center"><a th:href="@{/listings/index}"><span class="glyphicon glyphicon-calendar"></span> listings</a></li>
+                        <li class="text-center"><a th:href="@{/dashboard}" th:text="${#authentication.principal.username}"><span class="glyphicon glyphicon-dashboard"></span> </a></li>
+                    </ul>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn" style="margin-top: 8px">Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
+
+<!--<nav class="navbar fixed-top navbar-inverse" th:fragment="mainNavbar">-->
+    <!--<a class="navbar-brand" href="/">sidework</a>-->
+    <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+        <!--<ul class="navbar-nav xs-auto">-->
+            <!--<div id="navbar" class="collapse navbar-collapse">-->
+                <!--<ul class="nav navbar-nav navbar-center">-->
+                    <!--<li><a th:href="@{/workers/index}">workers</a></li>-->
+                    <!--<li><a th:href="@{/businesses/index}">businesses</a></li>-->
+                    <!--<li><a th:href="@{/listings/index}">listings</a></li>-->
+                <!--</ul>-->
+                <!--<ul class="nav navbar-nav emphasis">-->
+
+<!--&lt;!&ndash; NEED TO FIX BUSINESS PROFILE PAGE LINK &ndash;&gt;-->
+                    <!--<li sec:authorize="isAuthenticated()">-->
+                        <!--<a class="nav-link" th:href="@{/businesses/profile}" th:text="${#authentication.principal.username}"></a>-->
+                    <!--</li>-->
+                    <!--<li sec:authorize="isAuthenticated()">-->
+                        <!--<a class="nav-link" th:href="@{/workers/profile/}" th:text="${#authentication.principal.username}"></a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+                <!--<ul class="nav navbar-nav navbar-right">-->
+                    <!--<li sec:authorize="!isAuthenticated()">-->
+                        <!--<a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Login</a>-->
+                    <!--</li>-->
+                    <!--<li sec:authorize="isAuthenticated()">-->
+                        <!--<form th:action="@{/logout}" th:method="post">-->
+                            <!--<button class="btn-link btn" style="margin-top: 8px"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Logout</button>-->
+                        <!--</form>-->
+                    <!--</li>-->
+                <!--</ul>-->
+             <!--</div>&lt;!&ndash; navbar-collapse &ndash;&gt;-->
+        <!--</ul>-->
+    <!--</div> &lt;!&ndash; container &ndash;&gt;-->
+<!--</nav>-->
 
 </body>
 </html>
