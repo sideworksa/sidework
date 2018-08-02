@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="normalize-page-margins">
-        <h1 class="text-center space-bottom" th:text="${business.businessName}"></h1>
+        <h3 class="sidework-username text-center space-bottom" th:text="${user.username}"></h3>
         <div class="row">
 
             <!--business profile img -->
@@ -19,7 +19,7 @@
                 <!-- info panel -->
                 <div class="panel panel-success space-bottom">
                     <div class="panel-heading">
-                        <h3 class="panel-title">business info</h3>
+                        <h3 class="panel-title"><span th:text="${business.businessName}"></span></h3>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group business-info-list">
@@ -44,42 +44,45 @@
                 </div><!-- info panel -->
 
 
-                <div class="panel panel-warning space-bottom">
+
+                <!-- unable to display all listings associated with business account-->
+                <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Job Listings</h3>
                     </div>
-                    <div class="list-group business-info-list" th:each="listing : ${listings}">
-                        <div class="row">
-                            <div class="col s8 offset-s2">
-                                <h1 th:text="${listing.getTitle()}"></h1>
-                                <p th:text="${listing.getDescription()}"></p>
-                                <a th:href="@{/listings/{listingId}/edit(listingId=${listing.getId()})}">edit</a>
-                            </div>
-                        </div>
-                            <div class="btn btn-warning btn-block">
-                                <a class="btn-warning job-listing-link panel-title" th:href="@{/listings/create}">Add new listing</a>
-                            </div>
+                    <div class="panel-body">
+                        <ul class="list-group business-info-list">
+                            <th:block th:each="listing : ${listings}">
+
+                                <li class="job-listing-link">
+                                   <span th:text="${listing.getTitle()}">title test </span>
+                                    <p th:text="${listing.getDescription()}">description test</p>
+                                </li>
+                            </th:block>
+                            <li class="btn btn-warning btn-block">
+                                <a class="btn-warning job-listing-link panel-title" th:href="@{/listings/create}">+ Post Job Listing</a>
+                            </li>
+                        </ul>
                     </div>
                 </div> <!-- listings panel -->
 
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Update password</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label for="Update_Password">Update Password:</label>
-                            <input id="Update_Password" name="Update_Password" class="form-control" type="password"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="Confirm_password">Confirm Password:</label>
-                            <input id="Confirm_password" name="Confirm_password" class="form-control" type="password"/>
-                        </div>
-                        <button type="submit" class="btn btn-danger btn-block" value="Log In">submit</button>
-                        <button type="submit" class="btn btn-danger btn-block" value="Log In">deactivate account
-                        </button>
-                    </div>
-                </div><!-- password panel -->
+                <!--<div class="panel panel-warning space-bottom">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<h3 class="panel-title">Job Listings</h3>-->
+                    <!--</div>-->
+                    <!--<div class="container" th:each="listing : ${listings}">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col s8 offset-s2">-->
+                                <!--<h1 th:text="${listing.title}"></h1>-->
+                                <!--<p th:text="${listing.description}"><description/p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                            <!--<div class="btn btn-warning btn-block">-->
+                                <!--<a class="btn-warning job-listing-link panel-title" th:href="@{/listings/create}">Add new listing</a>-->
+                            <!--</div>-->
+                    <!--</div>-->
+                <!--</div> &lt;!&ndash; listings panel &ndash;&gt;-->
+
             </div>
         </div> <!-- business information row -->
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head:: mainHead('about us')">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-default" th:replace="fragments/navbar :: mainNavbar"></nav>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center">about us</h1>
+        <p class="text-center">meet the crew putting the <strong>work</strong> in sidework</p>
+    </div><!-- jumbotron -->
+
+    <div class="row">
+        <!--<div class="col-sm-6 col-md-6">-->
+        <!--<div class="thumbnail border-none">-->
+        <!--<img class="profilePicture" src="/img/sideworkLogoZoom.png" alt="sidework"/>-->
+        <!--<div class="caption">-->
+        <!--<h1>sidework</h1>-->
+        <!--<p>Sidework is an online local labor marketplace connecting hospitality and industry professionals with fluctuating restaurant staffing demands.</p>-->
+        <!--<a href="https://www.instagram.com/sideworksa/" class="fa fa-instagram"></a>-->
+        <!--<a href="https://twitter.com/sideworksa" class="fa fa-twitter"></a>-->
+        <!--<a href="https://github.com/sidework-capstone/sidework" class="fa fa-github"></a>-->
+        <!--<a href="https://www.facebook.com/sideworksa/" class="fa fa-facebook"></a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="col-sm-6 col-md-6">
+            <div class="thumbnail border-none profilePicture">
+                <img class="profilePicture" src="/img/MaryFinal.jpeg" alt="mary"/>
+                <div class="caption">
+                    <h3>mary kathryn syms</h3>
+                    <br />
+                    <p>I am a software engineer determined to make the internet and tech culture a space that empowers everyone who works within it. My broad experience within the hospitality industry is testament to my deeply empathetic nature. I want to harness this strength to be part of a team committed to building inclusive workplaces. That is central to my life, my work, and my world-view as a developer.
+
+                        I aspire to create exceptional applications that are responsive and engaging, by focusing on the user experience through a highly-optimized database and intuitive front end design.</p>
+                    <p><a href="https://linkedin.com/in/marykathrynsyms" class="btn btn-default" role="button">linkedin</a>
+                        <a href="https://github.com/marykathrynsyms" class="btn btn-default" role="button">github</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="thumbnail border-none profilePicture">
+                <img class="profilePicture" src="/img/sideworkLogoZoom.png" alt="sidework"/>
+                <div class="caption">
+                    <h3>sidework</h3>
+                    <p>Sidework is an online local labor marketplace connecting hospitality and industry professionals with fluctuating restaurant staffing demands. Started right here in San Antonio, Texas. Feel free to email us at sideworksa@gmail.com and follow us @sideworksa on all your favorite social media platforms.
+
+                    HUGE THANKS to the Codeup Instructors and Staff for pushing me to do great work</p>
+                    <p>
+                        <a href="https://www.instagram.com/sideworksa/" class="btn btn-default" role="button">@sidework (instagram/twitter)</a>
+                        <a href="https://github.com/sidework-capstone/sidework" class="btn btn-default" role="button">github (check pull request)</a></p>
+                </div>
+            </div>
+        </div>
+    </div><!-- end of picture row-->
+</div><!-- container -->
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+</body>
+</html>

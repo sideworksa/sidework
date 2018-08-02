@@ -64,6 +64,7 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
@@ -166,11 +167,20 @@ a.navbar-brand {
 
 .sidework-link {
     display: block;
-    font-family: 'arial';
-    margin-left: -20px;
-    font-size: 6em;
+    font-family: 'Lobster', cursive;
+    font-size: 10em;
     text-align: center;
-    color: #41663a;
+    color: #5bb85b;
+    text-shadow: 2px 2px #4c4641;
+}
+
+
+.sidework-username{
+    display: block;
+    font-family: 'Lobster', cursive;
+    font-size: 5em;
+    text-align: center;
+    color: #5bb85b;
     text-shadow: 2px 2px #4c4641;
 }
 
@@ -179,7 +189,119 @@ a.navbar-brand {
     color: #69d069;
 }
 
+a.login-link {
+    text-align: right;
+    color: #5bb85b;
+    font-style: italic;
+    text-shadow: 2px 2px #4c4641;
+}
 
+a.register-link {
+    text-align: right;
+    color: #5bb85b;
+    font-style: italic;
+    text-shadow: 2px 2px #4c4641;
+}
+
+
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+
+.video-container video.fillWidth {
+    width: 100%;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -999;
+    background: rgba(255, 255, 255, 0.5);
+    color: #f1f1f1;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#otherVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -999;
+    background: rgba(255, 255, 255, 0.5);
+    color: #f1f1f1;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+
+/* Style the button used to pause/play the video */
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
 /* About Us
 -------------------------------------------------- */
 
