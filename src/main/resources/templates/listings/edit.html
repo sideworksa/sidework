@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: mainHead('edit your profile')"></head>
+<head th:include="fragments/head :: mainHead('edit your listing')"></head>
 <body>
 <header>
     <nav th:replace="fragments/navbar :: mainNavbar"></nav>
@@ -8,11 +8,11 @@
 
 <div class="container">
     <div class="normalize-page-margins">
-        <h1 class="text-right title-emphasis">edit your profile</h1>
+        <h1 class="text-right title-emphasis">edit your listing</h1>
 
         <br/>
         <div class="form-wrapper">
-            <!--Display the form for editing an existing worker's profile-->
+            <!--Display the form for editing an existing job listing-->
             <form
                     th:action="${'/workers/edit'}"
                     method="post" th:object="${user}">
@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
-                        <label for="last_name">last name</label>
-                        <input id="last_name" name="lastName" th:field="${worker.lastName}"  class="form-control" type="text" />
+                    <label for="last_name">last name</label>
+                    <input id="last_name" name="lastName" th:field="${worker.lastName}"  class="form-control" type="text" />
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
@@ -64,7 +64,7 @@
 
                 <br/>
                 <div class="col-sm-12">
-                        <input type="submit" class="btn btn-block btn-success" value="update profile" />
+                    <input type="submit" class="btn btn-block btn-success" value="update profile" />
                 </div>
             </form>
         </div> <!-- form wrapper -->

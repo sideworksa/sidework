@@ -5,35 +5,35 @@ import com.sideworksa.demo.models.UserWithRoles;
 import com.sideworksa.demo.models.Worker;
 import com.sideworksa.demo.repositories.UserRepository;
 import com.sideworksa.demo.repositories.WorkerRepository;
+import com.sideworksa.demo.services.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
 import java.util.Collections;
 
 @Controller
 public class WorkersController {
     private final WorkerRepository workerRepository;
     private final UserRepository userRepository;
+    private WorkerService workerService;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WorkersController(WorkerRepository workerRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public WorkersController(WorkerRepository workerRepository, UserRepository userRepository, WorkerService workerService, PasswordEncoder passwordEncoder) {
         this.workerRepository = workerRepository;
         this.userRepository = userRepository;
+        this.workerService = workerService;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -108,98 +108,47 @@ public class WorkersController {
     }
 
 
-    // view worker's profile edit-form
+//    // view worker's profile edit-form
+//    @GetMapping("/workers/{id}/edit")
+//    public String showEditWorkerProfile(Model viewModel) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        if (user.getId() == 0) {
+//            return "redirect:/login";
+//        }
+//        user = userRepository.findOne(user.getId());
+//
+//        viewModel.addAttribute("user", user);
+//
+//        return "workers/edit";
+//    }
+
+    // edit worker's profile using CRUD
     @GetMapping("/workers/{id}/edit")
-    public String showEditWorkerProfile(Model viewModel) {
+    public String showEditWorkerForm(@PathVariable long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (user.getId() == 0) {
             return "redirect:/login";
         }
-        user = userRepository.findOne(user.getId());
+        user = userRepository.findById(user.getId());
+        Worker worker = workerRepository.findByUser(user);
 
-        viewModel.addAttribute("user", user);
+        model.addAttribute("user", user);
+        model.addAttribute("worker", worker);
 
         return "workers/edit";
     }
 
-    // edit worker's profile using CRUD
-    @PostMapping("/workers/edit")
-//    public String editWorkerProfile(@ModelAttribute User user, @ModelAttribute Worker worker) {
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        user.setPassword(currentUser.getPassword());
-//
-//        userRepository.save(user);
-//        workerRepository.save(worker);
-//
+    @PostMapping("/workers/{id}/edit")
+    public String editWorker(@PathVariable long id, @ModelAttribute User user, @ModelAttribute Worker worker) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        worker.setUser(user);
+        worker.setId(id);
+        workerService.save(worker);
 
-    public String editWorkerProfile(@Valid User user, Errors validation, Model model) {
-
-            User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if (currentUser.getId() == 0) {
-                return "redirect:/login";
-            }
-
-
-            // update password
-            if (!user.getPassword().equals("")) {
-
-                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-                if ((!passwordEncoder.matches(user.getPassword(), currentUser.getPassword()))) {
-                    validation.rejectValue(
-                            "password",
-                            "password",
-                            "please enter in a correct password"
-                    );
-
-                } else {
-
-                    if (user.getNewPassword().equals("")) {
-                        validation.rejectValue(
-                                "newPassword",
-                                "newPassword",
-                                "your password cannot be blank"
-                        );
-
-                    } else if (!user.getNewPassword().equals(user.getConfirmNewPassword())) {
-                        validation.rejectValue(
-                                "confirmNewPassword",
-                                "confirmNewPassword",
-                                "passwords do not match"
-                        );
-
-
-                    } else {
-                        String hashPassword = passwordEncoder.encode(user.getNewPassword());
-                        user.setPassword(hashPassword);
-                    }
-
-                }
-
-
-                // if user does not want to change password
-            } else
-
-            {
-                // use same password
-                user.setPassword(currentUser.getPassword());
-            }
-
-
-            if(validation.hasErrors())
-
-            {
-                model.addAttribute("errors", validation);
-                model.addAttribute("user", user);
-                return "workers/edit";
-            }
-
-            userRepository.save(user);
-
-
-            return "redirect:/workers/profile";
+        return "redirect:/dashboard";
     }
 
 

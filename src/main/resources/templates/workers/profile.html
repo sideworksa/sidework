@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="normalize-page-margins">
-        <h1 class="text-center space-bottom" th:text="${user.username}">'s sidework</h1>
+        <h3 class="sidework-username text-center space-bottom" th:text="${user.username}"></h3>
         <div class="row">
 
             <!-- worker profile img -->
@@ -19,13 +19,13 @@
                 <!-- info panel -->
                 <div class="panel panel-success space-bottom">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><span th:text="${worker.firstName}"></span> <span th:text="*{worker.lastName}"></span></h3>
+                        <h3 class="panel-title"><span th:text="${worker.firstName}"></span> <span th:text="${worker.lastName}"></span></h3>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group business-info-list">
                             <li class="list-group-item">
                                 <span class="glyphicon glyphicon-earphone btn-lg" aria-hidden="true"></span>
-                                <span th:tel="${worker.phone}"></span>
+                                <span th:text="${worker.phone}"></span>
                             </li>
                             <li class="list-group-item">
                                 <span class="glyphicon glyphicon-envelope btn-lg" aria-hidden="true"></span>
