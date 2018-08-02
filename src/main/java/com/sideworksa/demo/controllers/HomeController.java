@@ -24,6 +24,16 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/aboutus")
+    public String showAboutUsPage() {
+        return "aboutus";
+    }
+
+    @GetMapping("/howitworks")
+    public String showHowItWorksPage() {
+        return "howitworks";
+    }
+
     @GetMapping("/dashboard")
     public String dashboard() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
