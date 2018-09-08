@@ -13,20 +13,20 @@
         <br/>
         <div class="form-wrapper">
             <!--Display the form for creating a new business-->
-            <form th:action="@{/businesses/create}" method="post" th:object="${business}">
+            <form th:action="@{/businesses/create}" method="post" th:object="${user}">
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="username">username</label>
-                    <input id="username" name="username" th:field="${user.username}" class="form-control" type="text" placeholder="tacobody"/>
+                    <input id="username" name="username" th:field="*{username}" class="form-control" type="text" placeholder="tacobody"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="email">email</label>
-                    <input id="email" name="email" th:field="${user.email}" class="form-control" type="email" placeholder="mary@tacobody.com"/>
+                    <input id="email" name="email" th:field="*{email}" class="form-control" type="email" placeholder="mary@tacobody.com"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="password">password</label>
-                    <input id="password" name="password" th:field="${user.password}" class="form-control" type="password" placeholder="************"/>
+                    <input id="password" name="password" th:field="*{password}" class="form-control" type="password" placeholder="************"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
@@ -36,31 +36,31 @@
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="business_name">business name</label>
-                    <input id="business_name" name="businessName" th:value="*{businessName}" class="form-control"
+                    <input id="business_name" name="businessName" th:value="${business.businessName}" class="form-control"
                            type="text" placeholder="The Monterey"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="business_address">address</label>
-                    <input id="business_address" name="address" th:value="*{address}" class="form-control"
+                    <input id="business_address" name="address" th:value="${business.address}" class="form-control"
                            type="text" placeholder="1127 S St Mary's St, San Antonio, TX 78210"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="business_phone_number">business phone number</label>
-                    <input id="business_phone_number" name="businessPhone" th:value="*{businessPhone}"
+                    <input id="business_phone_number" name="businessPhone" th:value="${business.businessPhone}"
                            class="form-control" type="tel" placeholder="210-867-5309"/>
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="website">website</label>
-                    <input id="website" name="website" th:value="*{website}" class="form-control"
+                    <input id="website" name="website" th:value="${business.website}" class="form-control"
                            type="text" placeholder="http://www.mybusiness.com"/>
                 </div>
 
                 <div class="col-sm-12 form-group">
                     <label for="info">info</label>
-                    <textarea id="info" name="businessInfo" th:value="*{businessInfo}" class="form-control" type="textarea" rows="3" placeholder="Inform others about your business"></textarea>
+                    <textarea id="info" name="businessInfo" th:value="${business.businessInfo}" class="form-control" type="textarea" rows="3" placeholder="Inform others about your business"></textarea>
                 </div>
 
 

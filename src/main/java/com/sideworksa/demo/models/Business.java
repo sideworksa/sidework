@@ -1,6 +1,7 @@
 package com.sideworksa.demo.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "businesses")
@@ -32,6 +33,10 @@ public class Business {
     // connecting Business profile to User
     @OneToOne
     private User user;
+
+    // connect Business profile to all their job postings
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "business")
+    private List<Listing> listing;
 
 
     public long getId() {
@@ -90,10 +95,21 @@ public class Business {
         this.user = user;
     }
 
+    public List<Listing> getListing() {
+        return listing;
+    }
+
+    public void setListing(List<Listing> listing) {
+        this.listing = listing;
+    }
+
     public Business(User user) {
         this.user = user;
     }
 
+    public Business(List<Listing> listing) {
+        this.listing = listing;
+    }
 
     public Business(String businessName, String businessPhone, String website, String address, String businessInfo) {
         this.businessName = businessName;
