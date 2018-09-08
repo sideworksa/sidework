@@ -17,8 +17,6 @@
                     th:action="@{/workers/edit/{id}(id=${user.id})}"
             method="post" th:object="${user}">
 
-                <!--<input th:field="*(id)" type="hidden"/>-->
-
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="username">username</label>
                     <input id="username" name="username" th:field="*{username}" class="form-control" type="text" />
@@ -29,15 +27,15 @@
                     <input id="email" name="email" th:field="*{email}" class="form-control" type="email" />
                 </div>
 
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="password">password</label>
-                    <input id="password" name="password" th:field="*{password}"  class="form-control" type="password" />
-                </div>
+                <!--<div class="col-sm-12 col-md-6 form-group">-->
+                    <!--<label for="password">password</label>-->
+                    <!--<input id="password" name="password" th:field="*{password}"  class="form-control" type="password" />-->
+                <!--</div>-->
 
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="confirm_password">confirm password</label>
-                    <input id="confirm_password" name="password_confirm" class="form-control" type="password" />
-                </div>
+                <!--<div class="col-sm-12 col-md-6 form-group">-->
+                    <!--<label for="confirm_password">confirm password</label>-->
+                    <!--<input id="confirm_password" name="password_confirm" class="form-control" type="password" />-->
+                <!--</div>-->
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="first_name">first name</label>

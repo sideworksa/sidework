@@ -31,6 +31,12 @@ public class UsersController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // change user password
+    @GetMapping("/users/password")
+    public String showChangePasswordForm(Model vModel) {
+        return "users/password";
+    }
+
     @GetMapping("/workers/search")
     public String searchForWorker(@RequestParam("searchKeyword") String searchKeyword, Model viewModel) {
         viewModel.addAttribute("workers", workerService.searchForWorker(searchKeyword));

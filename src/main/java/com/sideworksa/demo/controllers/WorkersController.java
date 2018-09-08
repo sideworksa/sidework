@@ -144,12 +144,10 @@ public class WorkersController {
 
     @PostMapping("/workers/edit/{id}")
     public String editWorker(@PathVariable long id, @ModelAttribute User user, @ModelAttribute Worker worker) {
-//        User databaseUser = userRepository.findById(id);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         user.setWorker(worker);
         worker.setUser(user);
-//        worker.setId(user.getId());
         workerService.save(user);
         workerService.save(worker);
 
