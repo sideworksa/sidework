@@ -102,8 +102,10 @@ public class WorkersController {
         }
 
         user = userRepository.findOne(user.getId());
+        Worker worker = workerRepository.findByUser(user);
 
         model.addAttribute("user", user);
+        model.addAttribute("worker", worker);
         return "workers/profile";
     }
 
@@ -124,7 +126,7 @@ public class WorkersController {
 //    }
 
     // edit worker's profile using CRUD
-    @GetMapping("/workers/{id}/edit")
+    @GetMapping("/workers/edit/{id}")
     public String showEditWorkerForm(@PathVariable long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -140,15 +142,15 @@ public class WorkersController {
         return "workers/edit";
     }
 
-    @PostMapping("/workers/{id}/edit")
+    @PostMapping("/workers/edit/{id}")
     public String editWorker(@PathVariable long id, @ModelAttribute User user, @ModelAttribute Worker worker) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         worker.setUser(user);
-        worker.setId(id);
+//        worker.setId(user.getId());
         workerService.save(worker);
 
-        return "redirect:/dashboard";
+        return "redirect:/workers/profile";
     }
 
 
