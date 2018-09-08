@@ -144,11 +144,22 @@ public class WorkersController {
 
     @PostMapping("/workers/edit/{id}")
     public String editWorker(@PathVariable long id, @ModelAttribute User user, @ModelAttribute Worker worker) {
+//        User databaseUser = userRepository.findById(id);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.setWorker(worker);
         worker.setUser(user);
 //        worker.setId(user.getId());
+        workerService.save(user);
         workerService.save(worker);
+
+        System.out.println(user);
+        System.out.println(user.getId());
+        System.out.println(user.getUsername());
+        System.out.println(worker);
+        System.out.println("\n");
+        System.out.println(worker.getId());
+        System.out.println(worker.getFirstName());
 
         return "redirect:/workers/profile";
     }
