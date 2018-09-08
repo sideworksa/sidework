@@ -58,6 +58,20 @@ public class UsersController {
         // keep in mind, might have to handle business change password
     }
 
+    // delete user
+    @PostMapping("/users/delete")
+    public String deleteUser(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.getId() == 0) {
+            return "redirect:/login";
+        }
+        user = userRepository.findById(user.getId());
+        userRepository.delete(user.getId());
+
+        System.out.println(user.getId());
+        return "/index";
+    }
+
     @GetMapping("/workers/search")
     public String searchForWorker(@RequestParam("searchKeyword") String searchKeyword, Model viewModel) {
         viewModel.addAttribute("workers", workerService.searchForWorker(searchKeyword));
