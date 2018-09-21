@@ -12,55 +12,61 @@
 
         <br/>
         <div class="form-wrapper">
-            <!--Display the form for editing an existing worker's profile-->
+            <!--Display the form for editing an existing business's profile-->
             <form
-                    th:action="${'/workers/edit'}"
+                    th:action="@{/businesses/edit/{id}(id=${user.id})}"
                     method="post" th:object="${user}">
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="username">username</label>
-                    <input id="username" name="username" th:field="${user.username}" class="form-control" type="text" />
+                    <input id="username" name="username" th:field="*{username}" class="form-control" type="text" />
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
                     <label for="email">email</label>
-                    <input id="email" name="email" th:field="${user.email}" class="form-control" type="email" />
+                    <input id="email" name="email" th:field="*{email}" class="form-control" type="email" />
+                </div>
+
+                <!--<div class="col-sm-12 col-md-6 form-group">-->
+                    <!--<label for="password">password</label>-->
+                    <!--<input id="password" name="password" th:field="*{password}"  class="form-control" type="password" />-->
+                <!--</div>-->
+
+                <!--<div class="col-sm-12 col-md-6 form-group">-->
+                    <!--<label for="confirm_password">confirm password</label>-->
+                    <!--<input id="confirm_password" name="confirm_password" class="form-control" type="password" />-->
+                <!--</div>-->
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="business_name">business name</label>
+                    <input id="business_name" name="businessName" th:field="${business.businessName}" class="form-control"
+                           type="text" />
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 form-group">
+                    <label for="business_address">address</label>
+                    <input id="business_address" name="address" th:field="${business.address}" class="form-control"
+                           type="text" />
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
-                    <label for="password">password</label>
-                    <input id="password" name="password" th:field="${user.password}"  class="form-control" type="password" />
+                    <label for="business_phone_number">business phone number</label>
+                    <input id="business_phone_number" name="businessPhone" th:field="${business.businessPhone}"
+                           class="form-control" type="tel" />
                 </div>
 
                 <div class="col-sm-12 col-md-6 form-group">
-                    <label for="confirm_password">confirm password</label>
-                    <input id="confirm_password" name="password_confirm" class="form-control" type="password" />
+                    <label for="website">website</label>
+                    <input id="website" name="website" th:field="${business.website}" class="form-control"
+                           type="text"/>
                 </div>
 
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="first_name">first name</label>
-                    <input id="first_name" name="firstName" th:field="${worker.firstName}" class="form-control" type="text" />
+                <div class="col-sm-12 form-group">
+                    <label for="info">info</label>
+                    <textarea id="info" name="businessInfo" th:field="${business.businessInfo}" class="form-control" type="textarea" rows="3" placeholder="Inform others about your business"></textarea>
                 </div>
 
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="last_name">last name</label>
-                    <input id="last_name" name="lastName" th:field="${worker.lastName}"  class="form-control" type="text" />
-                </div>
-
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="phone">phone</label>
-                    <input id="phone" name="phone" th:field="${worker.phone}" class="form-control" type="tel" />
-                </div>
-
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="skills">skills</label>
-                    <textarea id="skills" name="skills" th:field="${worker.skills}" class="form-control"></textarea>
-                </div>
-
-                <div class="col-sm-12 col-md-6 form-group">
-                    <label for="bio">bio</label>
-                    <textarea id="bio" name="bio" th:field="${worker.bio}" class="form-control"></textarea>
-                </div>
 
                 <br/>
                 <div class="col-sm-12">
