@@ -59,7 +59,7 @@ public class UsersController {
     }
 
     // delete user
-    @PostMapping("/users/delete")
+    @PostMapping("/users/delete/{id}")
     public String deleteUser(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (user.getId() == 0) {
