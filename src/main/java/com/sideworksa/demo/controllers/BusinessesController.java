@@ -6,6 +6,7 @@ import com.sideworksa.demo.models.User;
 import com.sideworksa.demo.repositories.BusinessRepository;
 import com.sideworksa.demo.repositories.ListingRepository;
 import com.sideworksa.demo.repositories.UserRepository;
+import com.sideworksa.demo.services.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,12 +23,14 @@ import java.util.List;
 public class BusinessesController {
     private final BusinessRepository businessRepository;
     private final UserRepository userRepository;
+    private BusinessService businessService;
     private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public BusinessesController(BusinessRepository businessRepository, UserRepository userRepository, ListingRepository listingRepository, PasswordEncoder passwordEncoder) {
+    public BusinessesController(BusinessRepository businessRepository, UserRepository userRepository, BusinessService businessService, ListingRepository listingRepository, PasswordEncoder passwordEncoder) {
         this.businessRepository = businessRepository;
+        this.businessService = businessService;
         this.userRepository = userRepository;
         this.listingRepository = listingRepository;
         this.passwordEncoder = passwordEncoder;
@@ -96,6 +99,45 @@ public class BusinessesController {
         model.addAttribute("business", business);
         return "businesses/profile";
     }
+
+    // show edit form for logged-in business user
+    @GetMapping("/businesses/edit/{id}")
+    public String showEditBusinessForm(@PathVariable long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (user.getId() == 0) {
+            return "redirect:/login";
+        }
+        user = userRepository.findById(user.getId());
+        Business business = businessRepository.findByUser(user);
+
+        model.addAttribute("user", user);
+        model.addAttribute("business", business);
+
+        return "businesses/edit";
+    }
+
+    // edit and save updated business profile
+    @PostMapping("/businesses/edit/{id}")
+    public String editBusiness(@PathVariable long id, @ModelAttribute User user, @ModelAttribute Business business) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        user.setBusiness(business);
+        business.setUser(user);
+        businessService.save(user);
+        businessService.save(business);
+
+        System.out.println(user);
+        System.out.println(user.getId());
+        System.out.println(user.getUsername());
+        System.out.println(business);
+        System.out.println("\n");
+        System.out.println(business.getId());
+        System.out.println(business.getBusinessName());
+
+        return "redirect:/workers/profile";
+    }
+
 
 }
 
