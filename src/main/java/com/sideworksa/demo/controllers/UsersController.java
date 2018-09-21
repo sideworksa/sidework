@@ -1,6 +1,8 @@
 package com.sideworksa.demo.controllers;
 
+import com.sideworksa.demo.models.Business;
 import com.sideworksa.demo.models.User;
+import com.sideworksa.demo.models.Worker;
 import com.sideworksa.demo.repositories.BusinessRepository;
 import com.sideworksa.demo.repositories.UserRepository;
 import com.sideworksa.demo.repositories.WorkerRepository;
@@ -65,12 +67,31 @@ public class UsersController {
         if (user.getId() == 0) {
             return "redirect:/login";
         }
-        user = userRepository.findById(user.getId());
+        user = userRepository.findOne(user.getId());
+        Worker worker = workerRepository.findByUser(user);
+        Business business = businessRepository.findByUser(user);
         userRepository.delete(user.getId());
 
         System.out.println(user.getId());
         return "/index";
     }
+
+//    @DeleteMapping("/delete/{custId}")
+//    public String deleteMethod(@PathVariable int custId) {
+//        try {
+//            // DELETE processing
+//            custStores.remove(custId);
+//        } catch (Exception e) {
+//            return "Error";
+//        }
+//
+//        // Log out custStores after DELETE
+//        System.out.println("Customer Stores after DELETE");
+//        custStores.forEach((id, cust) -> System.out.println(cust.toString()));
+//
+//        return "Done";
+//    }
+
 
     @GetMapping("/workers/search")
     public String searchForWorker(@RequestParam("searchKeyword") String searchKeyword, Model viewModel) {
