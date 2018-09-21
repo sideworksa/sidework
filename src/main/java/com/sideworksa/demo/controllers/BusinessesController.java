@@ -6,6 +6,8 @@ import com.sideworksa.demo.models.User;
 import com.sideworksa.demo.repositories.BusinessRepository;
 import com.sideworksa.demo.repositories.ListingRepository;
 import com.sideworksa.demo.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ public class BusinessesController {
     private ListingRepository listingRepository;
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
     public BusinessesController(BusinessRepository businessRepository, UserRepository userRepository, ListingRepository listingRepository, PasswordEncoder passwordEncoder) {
         this.businessRepository = businessRepository;
         this.userRepository = userRepository;
@@ -62,7 +65,7 @@ public class BusinessesController {
         return "businesses/index";
     }
 
-    // show specific business' profile by id
+    // show profile by id for specific business
     @GetMapping("/businesses/profile/{id}")
     public String showBusinessProfile(@PathVariable long id, Model model) {
         User user = userRepository.findOne(id);
@@ -79,9 +82,38 @@ public class BusinessesController {
 
     // view logged-in business' profile
     @GetMapping("/businesses/profile")
-    public String viewBusinessProfile() {
+    public String businessProfile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (user.getId() == 0) {
+            return "redirect:/login";
+        }
+
+        user = userRepository.findOne(user.getId());
+        Business business = businessRepository.findByUser(user);
+
+        model.addAttribute("user", user);
+        model.addAttribute("business", business);
         return "businesses/profile";
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

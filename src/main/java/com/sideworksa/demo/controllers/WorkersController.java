@@ -1,17 +1,12 @@
 package com.sideworksa.demo.controllers;
 
 import com.sideworksa.demo.models.User;
-import com.sideworksa.demo.models.UserWithRoles;
 import com.sideworksa.demo.models.Worker;
 import com.sideworksa.demo.repositories.UserRepository;
 import com.sideworksa.demo.repositories.WorkerRepository;
 import com.sideworksa.demo.services.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.Collections;
 
 @Controller
 public class WorkersController {
@@ -57,18 +50,6 @@ public class WorkersController {
         workerRepository.save(worker);
 
         return "redirect:/login";
-    }
-
-    // user authentication
-    private void authenticate(User newUser) {
-        UserDetails userDetails = new UserWithRoles(newUser, Collections.emptyList());
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-                userDetails,
-                userDetails.getPassword(),
-                userDetails.getAuthorities()
-        );
-        SecurityContext context = SecurityContextHolder.getContext();
-        context.setAuthentication(auth);
     }
 
     // show all workers
@@ -108,22 +89,6 @@ public class WorkersController {
         model.addAttribute("worker", worker);
         return "workers/profile";
     }
-
-
-//    // view worker's profile edit-form
-//    @GetMapping("/workers/{id}/edit")
-//    public String showEditWorkerProfile(Model viewModel) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        if (user.getId() == 0) {
-//            return "redirect:/login";
-//        }
-//        user = userRepository.findOne(user.getId());
-//
-//        viewModel.addAttribute("user", user);
-//
-//        return "workers/edit";
-//    }
 
     // edit worker's profile using CRUD
     @GetMapping("/workers/edit/{id}")
